@@ -1,7 +1,7 @@
 package com.ming.logisticsmanagement.contract
 
 interface SplashContract {
-    interface Presenter:BasePresenter{
+    interface Presenter : BasePresenter{
         fun checkLoginStatus()//检查登录状态
     }
     interface View{

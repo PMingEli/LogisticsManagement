@@ -1,7 +1,9 @@
 package com.ming.logisticsmanagement
 
+import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.View
 import com.ming.logisticsmanagement.contract.SplashContract
 import com.ming.logisticsmanagement.presenter.SplashPresenter
 import org.jetbrains.anko.startActivity
