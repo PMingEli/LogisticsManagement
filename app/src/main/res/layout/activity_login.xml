@@ -39,7 +39,7 @@
                 ></ImageView>
 
             <EditText
-                android:id="@+id/text_account"
+                android:id="@+id/userName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginRight="60dp"
@@ -67,7 +67,7 @@
                 ></ImageView>
 
             <EditText
-                android:id="@+id/text_password"
+                android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
@@ -85,7 +85,7 @@
             android:background="@color/white"
             android:layout_marginTop="80dp">
             <Button
-                android:id="@+id/btn_signin"
+                android:id="@+id/btn_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="登       录"
