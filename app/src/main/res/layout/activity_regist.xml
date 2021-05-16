@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_blue">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="100dp"
+            android:gravity="center_horizontal"
+            android:text="物流管理系统V1.0"
+            android:textColor="@color/white"
+            android:textSize="36sp" />
+        <EditText
+            android:id="@+id/input_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入您的账号"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:inputType="number"
+            android:imeOptions="actionNext"
+            ></EditText>
+        <EditText
+            android:id="@+id/input_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入您的账号密码"
+            android:inputType="textPassword"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:imeOptions="actionNext"
+            ></EditText>
+        <EditText
+            android:id="@+id/input_passwordreput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请再次输入您的账号密码"
+            android:inputType="textPassword"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:imeOptions="actionGo"
+            ></EditText>
+        <Button
+            android:id="@+id/regist"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:text="注册"
+            android:backgroundTint="@color/bg_blue"
+            android:textSize="24sp"></Button>
+    </LinearLayout>
+
+</LinearLayout>

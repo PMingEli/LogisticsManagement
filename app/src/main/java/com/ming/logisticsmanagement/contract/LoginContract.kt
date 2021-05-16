@@ -9,7 +9,7 @@ interface LoginContract {
         fun onUserNameError()
         fun onPasswordError()
         fun onStartLogin()
-        fun onLoggedInSuccess()
+        fun onLoggedInSuccess(userName: String,password: String)
         fun onLoggedInFailed()
     }
 }

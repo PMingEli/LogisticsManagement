@@ -3,8 +3,12 @@ package com.ming.logisticsmanagement
 import android.app.ProgressDialog
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.ming.logisticsmanagement.contract.UserDao
 
 abstract class BaseActivity : AppCompatActivity() {
+
+    private var userdatabase: UserDatabase? = null
+    lateinit var userdao:UserDao
 
     val progressDialog by lazy {
         ProgressDialog(this)
@@ -13,7 +17,14 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutResId())
+        initData()
         init()
+    }
+
+    //初始化数据
+    open fun initData(){
+        userdatabase=UserDatabase.getDatabase(applicationContext)!!
+        userdao=userdatabase?.getUserDao()!!
     }
 
     open fun init(){

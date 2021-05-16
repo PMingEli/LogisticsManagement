@@ -1,47 +1,39 @@
 package com.ming.logisticsmanagement
 
-import android.app.Activity
-import android.content.Intent
-import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
+import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.startActivity
 
 
-class MainActivity : Activity(), View.OnClickListener {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+class MainActivity : BaseActivity() {
 
-        findViewById<Button>(R.id.btn_signin).setOnClickListener(this)
-        findViewById<Button>(R.id.btn_back).setOnClickListener(this)
-    }
+    private val userName:String? by lazy { intent.getStringExtra("userName") }
+    private val password:String? by lazy { intent.getStringExtra("password") }
 
-    override fun onClick(v: View?) {
-        when(v?.id){
-            R.id.btn_signin -> {
+    override fun getLayoutResId(): Int = R.layout.activity_main
 
-                val intent = Intent().setClass(this@MainActivity, SecondActivity::class.java)
-                val editText1 = findViewById<View>(R.id.text_account) as EditText
-                val editText2 = findViewById<View>(R.id.text_password) as EditText
-
-                val account = editText1.text.toString()
-                val password = editText2.text.toString()
-                intent.putExtra("Name", account)
-                intent.putExtra("Password", password)
-                startActivity(intent)
-                finish()
-            }
-            R.id.btn_back -> {
-                //ActivityCollector.finishAll()
-                exitProcess()
-            }
-
-
+    override fun init() {
+        super.init()
+        enter_waybill.setOnClickListener {  }//录入运单
+        query_local_waybill.setOnClickListener {  }//本地运单
+        query_xml_waybill.setOnClickListener {  }//xml运单
+        query_json_waybill.setOnClickListener {  }//json运单
+        switch_user.setOnClickListener {
+            startActivity<LoginActivity>()
+            finish()
         }
+        quit.setOnClickListener { finish() }
+        accountmsgshow()
+
     }
 
-    private fun exitProcess() {
-        System.exit(-1)
+    fun accountmsgshow(){
+
+        val text_userName = findViewById<View>(R.id.userName) as TextView
+        val text_password = findViewById<View>(R.id.password) as TextView
+        text_userName.text = "我是"+ userName
+        text_password.text = "我的密码是"+ password
     }
+
 }
