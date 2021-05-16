@@ -1,7 +1,8 @@
-package com.ming.logisticsmanagement
+package com.ming.logisticsmanagement.ui.activity
 
 import android.view.View
 import android.widget.TextView
+import com.ming.logisticsmanagement.R
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 
@@ -15,12 +16,14 @@ class MainActivity : BaseActivity() {
 
     override fun init() {
         super.init()
-        enter_waybill.setOnClickListener {  }//录入运单
+        enter_waybill.setOnClickListener {
+            startActivity<EnterwaybillActivity>("userName" to userName, "password" to password)
+        }//录入运单
         query_local_waybill.setOnClickListener {  }//本地运单
         query_xml_waybill.setOnClickListener {  }//xml运单
         query_json_waybill.setOnClickListener {  }//json运单
         switch_user.setOnClickListener {
-            startActivity<LoginActivity>()
+            startActivity<LoginActivity>("userName" to userName, "password" to password)
             finish()
         }
         quit.setOnClickListener { finish() }

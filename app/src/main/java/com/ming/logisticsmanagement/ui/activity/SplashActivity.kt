@@ -1,9 +1,8 @@
-package com.ming.logisticsmanagement
+package com.ming.logisticsmanagement.ui.activity
 
-import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.View
+import com.ming.logisticsmanagement.R
 import com.ming.logisticsmanagement.contract.SplashContract
 import com.ming.logisticsmanagement.presenter.SplashPresenter
 import org.jetbrains.anko.startActivity
@@ -34,7 +33,7 @@ class SplashActivity : BaseActivity() , SplashContract.View {
         handler.postDelayed({
             startActivity<LoginActivity>()
             finish()
-        },DELAY)
+        }, DELAY)
     }
 
     //跳转到主界面

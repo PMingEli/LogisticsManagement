@@ -1,18 +1,17 @@
-package com.ming.logisticsmanagement
+package com.ming.logisticsmanagement.ui.activity
 
-import android.app.Activity
 import android.content.pm.PackageManager
 import android.view.View
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.ming.logisticsmanagement.R
 import com.ming.logisticsmanagement.contract.LoginContract
 import com.ming.logisticsmanagement.presenter.LoginPresenter
 import com.ming.logisticsmanagement.viewmodel.FindUserModel
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
-import java.util.jar.Manifest
 
 class LoginActivity : BaseActivity(),LoginContract.View {
 

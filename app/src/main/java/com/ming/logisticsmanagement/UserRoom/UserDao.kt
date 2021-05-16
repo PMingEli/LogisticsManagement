@@ -1,10 +1,10 @@
-package com.ming.logisticsmanagement.contract
+package com.ming.logisticsmanagement.UserRoom
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.ming.logisticsmanagement.User
+import com.ming.logisticsmanagement.UserRoom.User
 
 @Dao
 interface UserDao {

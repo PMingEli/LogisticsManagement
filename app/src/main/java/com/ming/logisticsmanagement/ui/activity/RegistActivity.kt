@@ -1,14 +1,14 @@
-package com.ming.logisticsmanagement
+package com.ming.logisticsmanagement.ui.activity
 
 import android.os.AsyncTask
 import android.os.Handler
 import android.os.Looper
-import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.ming.logisticsmanagement.contract.LoginContract
+import com.ming.logisticsmanagement.R
+import com.ming.logisticsmanagement.UserRoom.User
 import com.ming.logisticsmanagement.contract.RegistContract
-import com.ming.logisticsmanagement.contract.UserDao
+import com.ming.logisticsmanagement.UserRoom.UserDao
 import com.ming.logisticsmanagement.extensions.isValidPassword
 import com.ming.logisticsmanagement.extensions.isValidUserName
 import com.ming.logisticsmanagement.viewmodel.FindUserModel
@@ -40,13 +40,14 @@ class RegistActivity : BaseActivity(), RegistContract.View {
         var textcount = input_account.text.trim().toString()
         var textpws = input_password.text.trim().toString()
         var textpwsre = input_passwordreput.text.trim().toString()
+        var textcity = input_city.text.trim().toString()
         if(textcount.isValidUserName()){
             if (textpws.isValidPassword()){
                 if (textpwsre.isValidPassword()){
                     if (!textpwsre.equals(textpws)){
                         toast("两次密码输入不一致")
                     }
-                    if (!textcount.isEmpty()&&!textpws.isEmpty()&&!textpwsre.isEmpty()&&textpwsre.equals(textpws)){
+                    if (textcount.isNotEmpty() && textpws.isNotEmpty() && textpwsre.isNotEmpty() &&textpwsre.equals(textpws)&&textcity.isNotEmpty()){
                         userviewModel.findUser = userdao.getUser(textcount)
 
                         userviewModel.findUser?.let {
@@ -57,7 +58,7 @@ class RegistActivity : BaseActivity(), RegistContract.View {
                                         toast("该账户已存在")
                                     }else{
                                         registFlag= false
-                                        var user = User(textcount,textpws)
+                                        var user = User(textcount,textpws,textcity)
                                         InsertAsyncTask(userdao).execute(user)
                                         //增设查询该条记录
                                         toast("插入成功")
@@ -75,7 +76,7 @@ class RegistActivity : BaseActivity(), RegistContract.View {
         }else onUserNameError()
     }
 
-    internal class InsertAsyncTask(private val userdao:UserDao):AsyncTask<User?,Unit,Unit>(){
+    internal class InsertAsyncTask(private val userdao: UserDao):AsyncTask<User?,Unit,Unit>(){
         override fun doInBackground(vararg params: User?) {
             publishProgress()
             userdao.insertUsers(*params)

@@ -1,16 +1,21 @@
-package com.ming.logisticsmanagement
+package com.ming.logisticsmanagement.ui.activity
 
 import android.app.ProgressDialog
 import android.content.Context
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
-import com.ming.logisticsmanagement.contract.UserDao
+import com.ming.logisticsmanagement.UserRoom.UserDatabase
+import com.ming.logisticsmanagement.WaybillRoom.WaybillDatabase
+import com.ming.logisticsmanagement.UserRoom.UserDao
+import com.ming.logisticsmanagement.WaybillRoom.WaybillDao
 
 abstract class BaseActivity : AppCompatActivity() {
 
     private var userdatabase: UserDatabase? = null
-    lateinit var userdao:UserDao
+    lateinit var userdao: UserDao
+    private var waybilldatabase: WaybillDatabase? = null
+    lateinit var waybilldao: WaybillDao
 
     val progressDialog by lazy {
         ProgressDialog(this)
@@ -29,7 +34,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     //初始化数据
     open fun initData(){
-        userdatabase=UserDatabase.getDatabase(applicationContext)!!
+        userdatabase= UserDatabase.getDatabase(applicationContext)!!
         userdao=userdatabase?.getUserDao()!!
     }
 

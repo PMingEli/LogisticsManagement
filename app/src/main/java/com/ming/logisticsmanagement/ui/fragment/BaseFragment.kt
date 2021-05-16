@@ -1,4 +1,4 @@
-package com.ming.logisticsmanagement
+package com.ming.logisticsmanagement.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
