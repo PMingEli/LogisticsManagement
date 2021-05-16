@@ -1,6 +1,9 @@
 package com.ming.logisticsmanagement
 
+import android.app.Activity
+import android.content.pm.PackageManager
 import android.view.View
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.ming.logisticsmanagement.contract.LoginContract
@@ -9,6 +12,7 @@ import com.ming.logisticsmanagement.viewmodel.FindUserModel
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
+import java.util.jar.Manifest
 
 class LoginActivity : BaseActivity(),LoginContract.View {
 
@@ -39,30 +43,61 @@ class LoginActivity : BaseActivity(),LoginContract.View {
     fun login(){
         //隐藏软键盘
         hideSoftKeyboard()
-        val userNameString = userName.text.trim().toString()
-        val passwordString = password.text.trim().toString()
-        presenter.login(userNameString, passwordString)
-        loginFlag = true
-        if (!userNameString.isEmpty()&&!passwordString.isEmpty()){
-            userviewModel.findUser = userdao.getUser(userNameString)
+        if (hasWriteExtenalStoragePermission()){
+            val userNameString = userName.text.trim().toString()
+            val passwordString = password.text.trim().toString()
+            presenter.login(userNameString, passwordString)
+            loginFlag = true
+            if (!userNameString.isEmpty()&&!passwordString.isEmpty()){
+                userviewModel.findUser = userdao.getUser(userNameString)
 
-            userviewModel.findUser?.let{
-                userviewModel.findUser!!.observe(this, Observer {
-                    if(loginFlag){
-                        if ((it!=null)){
-                            if (it.password.equals(passwordString)){
-                                toast("登陆成功")
-                                onLoggedInSuccess(userNameString,passwordString)
+                userviewModel.findUser?.let{
+                    userviewModel.findUser!!.observe(this, Observer {
+                        if(loginFlag){
+                            if ((it!=null)){
+                                if (it.password.equals(passwordString)){
+                                    toast("登陆成功")
+                                    onLoggedInSuccess(userNameString,passwordString)
+                                }else{
+                                    onLoggedInFailed()
+                                }
                             }else{
-                                onLoggedInFailed()
+                                toast("用户不存在")
                             }
-                        }else{
-                            toast("用户不存在")
                         }
-                    }
-                })
+                    })
+                }
             }
+        }else applyWriteExtenalStoragePermission()
+
+
+
+
+    }
+
+    //检查是否有写磁盘的权限
+    private fun hasWriteExtenalStoragePermission():Boolean {
+        val result = ActivityCompat.checkSelfPermission(this,android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        return result==PackageManager.PERMISSION_GRANTED
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
+            //用户同意权限，开始登录
+            login()
+        }else{
+            toast(R.string.permission_denied)
         }
+    }
+
+    private fun applyWriteExtenalStoragePermission(){
+        val permissions = arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        ActivityCompat.requestPermissions(this,permissions,0)
     }
 
 
