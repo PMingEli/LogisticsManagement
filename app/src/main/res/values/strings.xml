@@ -6,4 +6,8 @@
     <string name="logging">正在登录</string>
     <string name="login_failed">登录失败</string>
     <string name="permission_denied">权限被拒绝</string>
+    <string name="localwaybill">本地运单</string>
+    <string name="load_waybills_failed">加载运单失败</string>
+    <string name="daofu">到付</string>
+    <string name="jifu">寄付</string>
 </resources>

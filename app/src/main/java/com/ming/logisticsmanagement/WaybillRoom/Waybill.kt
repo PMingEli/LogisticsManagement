@@ -6,31 +6,44 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class Waybill(
-    @ColumnInfo(name = "consignor")
-    val consignor:String,
-    @ColumnInfo(name = "consignorPhoneNumber")
-    val consignorPhoneNumber:String,
-    @ColumnInfo(name = "consignee")
-    val consignee:String,
-    @ColumnInfo(name = "consigneePhoneNumber")
-    val consigneePhoneNumber:String,
-    @ColumnInfo(name = "transportationDepartureStation")
-    val transportationDepartureStation:String,
-    @NonNull
-    @ColumnInfo(name = "transportationArrivalStation")
-    val transportationArrivalStation:String,
-    @NonNull
-    @ColumnInfo(name = "goodsName")
-    val goodsName:String,
-    @NonNull
-    @ColumnInfo(name = "numberOfPackages")
-    val numberOfPackages:String,
-    @ColumnInfo(name = "FreightPaidByConsignor")
-    val FreightPaidByConsignor:String,
-    @ColumnInfo(name = "FreightPaidByConsignee")
-    val FreightPaidByConsignee:String
+class Waybill(
+    consignor:String,consignorPhoneNumber:String,consignee:String,consigneePhoneNumber:String,
+    transportationDepartureStation:String,transportationArrivalStation:String,goodsName:String,
+    numberOfPackages:String,FreightPaidByConsignor:String,FreightPaidByConsignee:String
 ){
     @PrimaryKey(autoGenerate = true)
     var waybillNo:Long=1000L
+
+    @ColumnInfo(name = "consignor")
+    val consignor:String = consignor
+
+    @ColumnInfo(name = "consignorPhoneNumber")
+    val consignorPhoneNumber:String = consignorPhoneNumber
+
+    @ColumnInfo(name = "consignee")
+    val consignee:String = consignee
+
+    @ColumnInfo(name = "consigneePhoneNumber")
+    val consigneePhoneNumber:String = consigneePhoneNumber
+
+    @ColumnInfo(name = "transportationDepartureStation")
+    val transportationDepartureStation:String = transportationDepartureStation
+
+    @NonNull
+    @ColumnInfo(name = "transportationArrivalStation")
+    val transportationArrivalStation:String = transportationArrivalStation
+
+    @NonNull
+    @ColumnInfo(name = "goodsName")
+    val goodsName:String = goodsName
+
+    @NonNull
+    @ColumnInfo(name = "numberOfPackages")
+    val numberOfPackages:String = numberOfPackages
+
+    @ColumnInfo(name = "FreightPaidByConsignor")
+    val FreightPaidByConsignor:String = FreightPaidByConsignor
+
+    @ColumnInfo(name = "FreightPaidByConsignee")
+    val FreightPaidByConsignee:String = FreightPaidByConsignee
 }

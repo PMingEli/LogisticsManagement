@@ -19,7 +19,9 @@ class MainActivity : BaseActivity() {
         enter_waybill.setOnClickListener {
             startActivity<EnterwaybillActivity>("userName" to userName, "password" to password)
         }//录入运单
-        query_local_waybill.setOnClickListener {  }//本地运单
+        query_local_waybill.setOnClickListener {
+            startActivity<LocalwaybillActivity>("userName" to userName, "password" to password)
+        }//本地运单
         query_xml_waybill.setOnClickListener {  }//xml运单
         query_json_waybill.setOnClickListener {  }//json运单
         switch_user.setOnClickListener {

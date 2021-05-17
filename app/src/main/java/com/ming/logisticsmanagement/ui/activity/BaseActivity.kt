@@ -36,6 +36,8 @@ abstract class BaseActivity : AppCompatActivity() {
     open fun initData(){
         userdatabase= UserDatabase.getDatabase(applicationContext)!!
         userdao=userdatabase?.getUserDao()!!
+        waybilldatabase = WaybillDatabase.getDatabase(applicationContext)!!
+        waybilldao = waybilldatabase?.getWaybillDao()!!
     }
 
     open fun init(){
