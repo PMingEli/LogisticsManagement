@@ -13,7 +13,7 @@ import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
-class LocalwaybillActivity: BaseActivity(),WaybillContract.View {
+class WaybillActivity: BaseActivity(),WaybillContract.View {
 
     lateinit var presenter: WaybillPresenter
 

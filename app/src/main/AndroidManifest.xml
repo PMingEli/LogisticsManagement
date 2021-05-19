@@ -25,7 +25,7 @@
         <activity android:name=".ui.activity.LoginActivity"></activity>
         <activity android:name=".ui.activity.RegistActivity"></activity>
         <activity android:name=".ui.activity.EnterwaybillActivity"></activity>
-        <activity android:name=".ui.activity.LocalwaybillActivity"></activity>
+        <activity android:name=".ui.activity.WaybillActivity"></activity>
 
     </application>
 

@@ -21,15 +21,15 @@ class MainActivity : BaseActivity() {
             finish()
         }//录入运单
         query_local_waybill.setOnClickListener {
-            startActivity<LocalwaybillActivity>("userName" to userName, "password" to password,"page" to "local")
+            startActivity<WaybillActivity>("userName" to userName, "password" to password,"page" to "local")
             finish()
         }//本地运单
         query_xml_waybill.setOnClickListener {
-            startActivity<LocalwaybillActivity>("userName" to userName, "password" to password,"page" to "xml")
+            startActivity<WaybillActivity>("userName" to userName, "password" to password,"page" to "xml")
             finish()
         }//xml运单
         query_json_waybill.setOnClickListener {
-            startActivity<LocalwaybillActivity>("userName" to userName, "password" to password,"page" to "json")
+            startActivity<WaybillActivity>("userName" to userName, "password" to password,"page" to "json")
             finish()
         }//json运单
         switch_user.setOnClickListener {
