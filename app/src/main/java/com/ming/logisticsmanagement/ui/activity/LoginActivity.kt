@@ -95,7 +95,7 @@ class LoginActivity : BaseActivity(),LoginContract.View {
     }
 
     private fun applyWriteExtenalStoragePermission(){
-        val permissions = arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        val permissions = arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE,android.Manifest.permission.INTERNET)
         ActivityCompat.requestPermissions(this,permissions,0)
     }
 
@@ -128,10 +128,6 @@ class LoginActivity : BaseActivity(),LoginContract.View {
         dismissProgress()
         //弹出Toast
         toast(R.string.login_failed)
-    }
-
-    fun IntoRegist(v: View){
-        startActivity<RegistActivity>()
     }
 
 }

@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.ming.logisticsmanagement.R
 import com.ming.logisticsmanagement.WaybillRoom.Waybill
 import com.ming.logisticsmanagement.WaybillRoom.WaybillDao
+import com.ming.logisticsmanagement.extensions.isValidPhoneNumber
 import com.ming.logisticsmanagement.viewmodel.FindUserModel
 import com.ming.logisticsmanagement.viewmodel.FindWaybillModel
 import kotlinx.android.synthetic.main.activity_enterwaybill.*
@@ -19,6 +20,7 @@ import kotlinx.android.synthetic.main.activity_enterwaybill.transportationDepart
 import kotlinx.android.synthetic.main.view_waybill_item.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
+import java.lang.Exception
 
 class EnterwaybillActivity: BaseActivity() {
 
@@ -44,6 +46,7 @@ class EnterwaybillActivity: BaseActivity() {
 
         back.setOnClickListener {
             startActivity<MainActivity>("userName" to userName, "password" to password)
+            finish()
         }
         save.setOnClickListener {
             Enterwaybill()
@@ -70,33 +73,41 @@ class EnterwaybillActivity: BaseActivity() {
         val FreightPaidByConsignor = FreightPaidByConsignor.text.trim().toString()
         val FreightPaidByConsignee = FreightPaidByConsignee.text.trim().toString()
         val transportationDepartureStation = transportationDepartureStation.text.trim().toString()
-        println("出发地："+transportationDepartureStation)
-        if (transportationArrivalStation.isNotEmpty()){
-            if (goodsName.isNotEmpty()){
-                if (numberOfPackages.isNotEmpty()){
-                    waybillviewModel.findWaybill = waybilldao.getConsignor(consignor)
+        try {
+            if (transportationArrivalStation.isNotEmpty()){
+                if (goodsName.isNotEmpty()){
+                    if (numberOfPackages.isNotEmpty()){
+                        if(consignorPhoneNumber.isValidPhoneNumber()){
+                            if (consigneePhoneNumber.isValidPhoneNumber()){
+                                val waybill = Waybill(consignor,consignorPhoneNumber,consignee,consigneePhoneNumber,transportationDepartureStation,transportationArrivalStation,goodsName,numberOfPackages,FreightPaidByConsignor,FreightPaidByConsignee)
+                                InsertAsyncTask(waybilldao).execute(waybill)
+                                //增设查询该条记录
+                                toast("插入成功")
+                                Handler(Looper.getMainLooper()).postDelayed(Runnable {
+                                    startActivity<MainActivity>("userName" to userName, "password" to password)
+                                    finish()
+                                },2000)
+                            }else{
+                                toast("收件人电话号码不正确，请输入11位正确的电话号码")
+                            }
+                        }else{
+                            toast("发件人电话号码不正确，请输入11位正确的电话号码")
+                        }
 
-                    waybillviewModel.findWaybill?.let {
-                        waybillviewModel.findWaybill!!.observe(this,{
-                            val waybill = Waybill(consignor,consignorPhoneNumber,consignee,consigneePhoneNumber,transportationDepartureStation,transportationArrivalStation,goodsName,numberOfPackages,FreightPaidByConsignor,FreightPaidByConsignee)
-                            InsertAsyncTask(waybilldao).execute(waybill)
-                            //增设查询该条记录
-                            toast("插入成功")
-                            Handler(Looper.getMainLooper()).postDelayed(Runnable {
-                                startActivity<MainActivity>("userName" to userName, "password" to password)
-                                finish()
-                            },2000)
-                        })
+                    }else{
+                        toast("件数不能为空")
                     }
                 }else{
-                    toast("件数不能为空")
+                    toast("货物名称不能为空")
                 }
             }else{
-                toast("货物名称不能为空")
+                toast("到站不能为空")
             }
-        }else{
-            toast("到站不能为空")
+        }catch (e:Exception){
+            startActivity<MainActivity>("userName" to userName, "password" to password)
+            finish()
         }
+
     }
 
 

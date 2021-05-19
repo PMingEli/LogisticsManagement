@@ -6,17 +6,23 @@ import android.view.View
 import android.widget.RelativeLayout
 import com.ming.logisticsmanagement.R
 import com.ming.logisticsmanagement.WaybillRoom.Waybill
-import kotlinx.android.synthetic.main.activity_enterwaybill.view.*
 import kotlinx.android.synthetic.main.view_waybill_item.view.*
 
 class WaybillListItemView(context: Context?, attrs: AttributeSet?=null) :
     RelativeLayout(context, attrs) {
-    fun bindView(waybill: Waybill) {
+    fun bindView(waybill: Waybill, page: String) {
         leaveplace.text = waybill.transportationDepartureStation
         arrivalplace.text = waybill.transportationArrivalStation
         goodname.text = waybill.goodsName
         goodnum.text = waybill.numberOfPackages
-        waybillnum.text = waybill.waybillNo.toString()
+        if(page=="xml"){
+            waybillnum.text = "X"+waybill.waybillNo.toString()
+        }else if(page=="json"){
+            waybillnum.text = "J"+waybill.waybillNo.toString()
+        }else{
+            waybillnum.text = waybill.waybillNo.toString()
+        }
+
         reciver.text = waybill.consignee
         reciverPhoneNumber.text = waybill.consigneePhoneNumber
         if (waybill.FreightPaidByConsignor.toInt()!=0){

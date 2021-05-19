@@ -4,6 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="60dp"
     android:background="@color/bg_blue">
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@drawable/back"
+        android:layout_marginLeft="10dp"
+        ></Button>
+
     <TextView
         android:id="@+id/headerTitle"
         android:layout_width="match_parent"
@@ -11,6 +20,7 @@
         android:textColor="@color/white"
         android:textSize="22sp"
         android:hint="本地运单"
-        android:gravity="center"></TextView>
+        android:gravity="center"
+        android:layout_marginRight="35dp"></TextView>
 
 </LinearLayout>

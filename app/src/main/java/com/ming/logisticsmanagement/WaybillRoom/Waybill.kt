@@ -12,7 +12,7 @@ class Waybill(
     numberOfPackages:String,FreightPaidByConsignor:String,FreightPaidByConsignee:String
 ){
     @PrimaryKey(autoGenerate = true)
-    var waybillNo:Long=1000L
+    var waybillNo:Long = 0
 
     @ColumnInfo(name = "consignor")
     val consignor:String = consignor
@@ -46,4 +46,5 @@ class Waybill(
 
     @ColumnInfo(name = "FreightPaidByConsignee")
     val FreightPaidByConsignee:String = FreightPaidByConsignee
+
 }

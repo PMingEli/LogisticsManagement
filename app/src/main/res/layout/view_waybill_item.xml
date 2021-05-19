@@ -21,8 +21,8 @@
                 android:id="@+id/leaveplace"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="北京"
-                android:textSize="20sp"
+                android:hint="乌鲁木齐"
+                android:textSize="16sp"
                 android:textColor="@color/white"
                 android:layout_marginLeft="10dp">
             </TextView>
@@ -30,57 +30,56 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="—>"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:textColor="@color/white">
             </TextView>
             <TextView
                 android:id="@+id/arrivalplace"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="沈阳"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:layout_marginLeft="10dp">
+                android:hint="乌鲁木齐"
+                android:textSize="16sp"
+                android:textColor="@color/white">
             </TextView>
 
             <TextView
                 android:id="@+id/goodname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="服装"
-                android:textSize="20sp"
+                android:hint="服装配件"
+                android:textSize="16sp"
                 android:textColor="@color/white"
-                android:layout_marginLeft="30dp">
+                android:layout_marginLeft="15dp">
             </TextView>
             <TextView
                 android:id="@+id/goodnum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="1"
-                android:textSize="20sp"
+                android:hint="10"
+                android:textSize="16sp"
                 android:textColor="@color/white">
             </TextView>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="件"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textColor="@color/white">
             </TextView>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="No:"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textColor="@color/white"
-                android:layout_marginLeft="30dp">
+                android:layout_marginLeft="15dp">
             </TextView>
             <TextView
                 android:id="@+id/waybillnum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="678910"
-                android:textSize="20sp"
+                android:hint="X6789100"
+                android:textSize="16sp"
                 android:textColor="@color/white">
             </TextView>
         </LinearLayout>
